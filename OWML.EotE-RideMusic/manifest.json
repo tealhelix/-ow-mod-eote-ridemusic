@@ -1,8 +1,8 @@
 {
-  "filename": "ModTemplate.dll",
-  "author": "Raicuparta",
-  "name": "Mod Template",
-  "uniqueName": "Raicuparta.ModTemplate",
-  "version": "0.1.0",
-  "owmlVersion": "2.0.0"
+  "filename": "RideMusic.dll",
+  "author": "tealhelix",
+  "name": "EotE Pirates of the [Spoiler]",
+  "uniqueName": "tealhelix.EotE-RideMusic",
+  "version": "1.0.0",
+  "owmlVersion": "2.1.0"
 }

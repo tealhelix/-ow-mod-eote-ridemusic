@@ -13,9 +13,10 @@ Pirates of the Eye! This mod replaces the dour music coming from the house in th
 Smell the bromine in the water, feel the air conditioned breeze on your face, and watch your step as you walk onto the ride vehicle!
 </p>
 
+### After the ride
 Past the house, or wherever you like, you can also play the music as background ambience.
 
-### Ambient music control
+#### Ambient music control
 | Key Combo | Description |
 |:---------:|:------------|
 `,` + `/` | Increase volume, starting play at min volume if it was off.

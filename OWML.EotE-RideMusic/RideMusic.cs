@@ -33,7 +33,7 @@ namespace RideMusic
             OWTime.OnPause += OnPause;
             OWTime.OnUnpause += OnUnpause;
 
-            ModHelper.Console.WriteLine($"Mod {nameof(RideMusic)} loaded!", MessageType.Success);
+            ModHelper.Console.WriteLine($"Avast, 'Echoes of the Caribbean' be loaded.", MessageType.Success);
         }
 
         private void OnPause(OWTime.PauseType pauseType)
@@ -104,7 +104,7 @@ namespace RideMusic
                     _ambientAudioSource.loop = true;
                     _ambientAudioSource.playOnAwake = false;
 
-                    // Unity just did not want to stop playing the instruments, and only modifying them (e.g. replacing _audioSource.clip then stopping and starting) didn't work.
+                    // Unity just did not want to stop playing the instruments, and only modifying them (e.g. replacing _audioSource.clip) and even nulling references didn't work.
                     // So, we're going to stomp on their handcrafted wooden instruments with extreme prejudice.
                     // Make sure PartyMusicController now does effectively nothing but start and stop our own sound:
 

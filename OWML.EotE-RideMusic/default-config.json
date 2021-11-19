@@ -1,3 +1,9 @@
 {
-	"enabled": true
+	"enabled": true,
+	"settings": {
+		"audioFileName": "PotC_ride_loop_lowpass_reverb.mp3",
+		"audioClipLengthWorkaroundDivisor": 8.0,
+		"soundMaxDistance": 152,
+		"audioRolloffMode": "Custom"
+	}
 }

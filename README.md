@@ -1,8 +1,11 @@
 # Echoes of the Caribbean
 ## SPOILERS: Mid-game spoilers for Outer Wilds: Echoes of the Eye below.
-<p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
-
-
+<p>v</p>
+<p>v</p>
+<p>v</p>
+<p>v</p>
+<p>v</p>
+<p>v</p>
 <p>
 Pirates of the Eye! This mod replaces the dour music coming from the house in the first dark area with the main theme from the Pirates of the Caribbean ride at Disney resorts.
 <p/>
@@ -14,7 +17,7 @@ Past the house, or wherever you like, you can also play the music as background 
 
 ### Ambient music control
 | Key Combo | Description |
-| :-: | --- |
+|:---------:|:------------|
 `,` + `/` | Increase volume, starting play at min volume if it was off.
 `,` + `.` | Decrease volume, stopping it if volume is now zero.
 
@@ -24,8 +27,8 @@ The music can be replaced with any sound loop of your choice by replacing the .m
 
 #### Disclaimers
 <p>
-<em>The default music assets (raw and mixed version of the clip) in this project are copyright of Disney and are excluded from the MIT license. Videos containing these clips may be subject to auto-takedown. I don't intend to profit from this mod, please let us have our fun.</em>
+_The default music assets (raw and mixed version of the clip) in this project are copyright of Disney and are excluded from the MIT license. Videos containing these clips may be subject to auto-takedown. I don't intend to profit from this mod, please let us have our fun._
 </p>
 
-### Todo
-* Restaurant at starting area with fake fireflies
+#### Todo
+Restaurant at starting area with fake fireflies

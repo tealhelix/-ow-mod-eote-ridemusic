@@ -1,5 +1,7 @@
 # Echoes of the Caribbean
 
+![logo](https://user-images.githubusercontent.com/94204968/143192991-bbed1566-607a-4557-a2b7-b004ac2f02db.png)
+
 ## SPOILERS: Mid-game spoilers for Outer Wilds: Echoes of the Eye below.  
 
 #### v  

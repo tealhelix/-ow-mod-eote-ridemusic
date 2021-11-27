@@ -6,6 +6,7 @@ namespace RideMusic
 	// [HarmonyPatchAll]
 	public static class PartyPatches
 	{
+		/*
 		private static bool Start(PartyMusicController __instance)
 		{
 			// just for safety
@@ -14,19 +15,19 @@ namespace RideMusic
 			// this tells Harmony to bypass the original implementation
 			return false;
 		}
+		*/
 
 		public static bool FadeIn(float duration)
 		{
 			// This gets called very early when the player is well out of range, and then multiple times after.
 			// So, it ends up this has the same effect as a Play() on entering the area.
-			s_FaderAudioSource.FadeTo(1.0f, 0.8f);
+			s_FaderAudioSource.FadeTo(1.0f, duration);
 			return false;
 		}
 
 		public static bool FadeOut(float duration)
 		{
-			// Gets called too early, wait for a StaggerStop instead.
-			// FadeTo(0f, duration);
+			s_FaderAudioSource.FadeTo(0f, duration);
 			return false;
 		}
 

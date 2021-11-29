@@ -1,7 +1,6 @@
 {
 	"enabled": true,
 	"settings": {
-		"_comment" : "The divisor is to work around a likely bug in Unity. If your clip is getting cut off at 1/8th of its actual time, try 1.0. audioRolloffMode can be Custom (the original gentle log), Logarithmic (quiet until pretty close), or Linear (louder quicker)",
 		"audioFileName": "PotC_ride_loop_lowpass_reverb.mp3",
 		"audioClipLengthWorkaroundDivisor": 8.0,
 		"soundMaxDistance": 154,

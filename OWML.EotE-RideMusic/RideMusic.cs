@@ -21,7 +21,7 @@ namespace RideMusic
         { 
             ModHelper.Events.Subscribe<PartyMusicController>(Events.AfterStart);
             ModHelper.Events.Event += OnEvent;
-
+            
             // This is a workaround for a likely bug in Unity 2017.3, and probably always needs to be 8 for now. See comments in Helpers.GetAudio()
             var audioClipLengthWorkaroundDivisor = ModHelper.Config.GetSettingsValue<double>("audioClipLengthWorkaroundDivisor");
             if (audioClipLengthWorkaroundDivisor <= 0f)
@@ -29,11 +29,19 @@ namespace RideMusic
 
             var audioFileName = ModHelper.Config.GetSettingsValue<string>("audioFileName");
             _rideAudioClip = Helpers.GetAudio(ModHelper.Manifest.ModFolderPath + audioFileName, audioClipLengthWorkaroundDivisor);
-            
+
+            // Make sure PartyMusicController now does effectively nothing but start and stop our own sound:
+
+            // ModHelper.HarmonyHelper.AddPrefix<PartyMusicController>("Start", typeof(PartyPatches), "Start");
+            ModHelper.HarmonyHelper.AddPrefix<PartyMusicController>("FadeIn", typeof(PartyPatches), "FadeIn");
+            ModHelper.HarmonyHelper.AddPrefix<PartyMusicController>("FadeOut", typeof(PartyPatches), "FadeOut");
+            ModHelper.HarmonyHelper.AddPrefix<PartyMusicController>("StaggerStop", typeof(PartyPatches), "StaggerStop");
+            ModHelper.HarmonyHelper.AddPrefix<PartyMusicController>("Update", typeof(PartyPatches), "Update");
+
             OWTime.OnPause += OnPause;
             OWTime.OnUnpause += OnUnpause;
 
-            ModHelper.Console.WriteLine($"Avast, 'Echoes of the Caribbean' be loaded.", MessageType.Success);
+            // ModHelper.Console.WriteLine("Avast, 'Echoes of the Caribbean' be loaded.", MessageType.Success);
         }
 
         private void OnPause(OWTime.PauseType pauseType)
@@ -78,6 +86,8 @@ namespace RideMusic
                     // They're actually playing four instruments: a lead, a drone, vocals, and bass. When you enter the house (StaggerStop() called) these fade rapidly and at different times.
                     // We're going to suppress all that and play our AudioSource from the house object instead.
 
+                    // After a gameplay loop ending, all this stuff gets reset but the original audio clips aren't reloaded.
+
                     var owAudioSources = partyMusicController.GetValue<OWAudioSource[]>("_instrumentSources"); // array of 4
 
                     // The component has to be on the party object too to get the spatial effects.
@@ -106,21 +116,18 @@ namespace RideMusic
 
                     // Unity just did not want to stop playing the instruments, and only modifying them (e.g. replacing _audioSource.clip) and even nulling references didn't work.
                     // So, we're going to stomp on their handcrafted wooden instruments with extreme prejudice.
-                    // Make sure PartyMusicController now does effectively nothing but start and stop our own sound:
-
-                    // ModHelper.HarmonyHelper.AddPrefix<PartyMusicController>("Start", typeof(PartyPatches), "Start");
-                    ModHelper.HarmonyHelper.AddPrefix<PartyMusicController>("FadeIn", typeof(PartyPatches), "FadeIn");
-                    ModHelper.HarmonyHelper.AddPrefix<PartyMusicController>("FadeOut", typeof(PartyPatches), "FadeOut");
-                    ModHelper.HarmonyHelper.AddPrefix<PartyMusicController>("StaggerStop", typeof(PartyPatches), "StaggerStop");
-                    ModHelper.HarmonyHelper.AddPrefix<PartyMusicController>("Update", typeof(PartyPatches), "Update");
 
                     // Suppress the AudioSources
                     foreach (var modSource in owAudioSources)
                     {
                         modSource.loop = false;
                         modSource.Stop();
-                        modSource.clip.UnloadAudioData();   // this is probably all the stomping really needed
-                        Destroy(modSource.clip);            // but why not
+                        if (modSource.clip != null)
+                        {
+                            // only on first gameplay loop
+                            modSource.clip.UnloadAudioData();   // this is probably all the stomping really needed
+                            Destroy(modSource.clip);            // but why not
+                        }
                     }
 
                     // And hand back a sad array of smoking nothingness

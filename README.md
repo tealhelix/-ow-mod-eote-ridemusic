@@ -38,5 +38,5 @@ The music can be replaced with any sound loop of your choice by replacing the .m
 The default music assets (raw and mixed version of the clip) in this project are copyright of Disney and are excluded from the MIT license. Videos containing these clips may be subject to auto-takedown. I don't intend to profit from this mod, please let us have our fun.
 
 #### Todo
-Restaurant at starting area with fake fireflies
-Club music from Tron: Legacy with strobing lights
+* Restaurant at starting area with fake fireflies
+* Club music from Tron: Legacy with strobing lights

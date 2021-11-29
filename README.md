@@ -39,3 +39,4 @@ The default music assets (raw and mixed version of the clip) in this project are
 
 #### Todo
 Restaurant at starting area with fake fireflies
+Club music from Tron: Legacy with strobing lights

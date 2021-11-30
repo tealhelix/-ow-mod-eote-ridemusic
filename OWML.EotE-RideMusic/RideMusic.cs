@@ -42,8 +42,27 @@ namespace RideMusic
             _beatsInEolTrack = 96;
 
             _interiorColorBeats._beats = new List<float[]>() { new float[] { 0 }, new float[] { 8 }, new float[] { 16 }, new float[] { 24 } };
+            for (float i = 30; i < 30.99; i += 0.5f)
+                _interiorColorBeats._beats.Add(new float[] { i });
+            for (float i = 31; i < 31.99; i += 0.125f)
+                _interiorColorBeats._beats.Add(new float[] { i });
+            for (var i = 32; i < 88; i++)
+                _interiorColorBeats._beats.Add(new float[] { i });
+            /*
+             * for a slightly randomized ending
+            for (float i = 88+1; i < 93.99f; i += 0.5f)
+                if (_sysRand.Next(100) < 65)
+                    _interiorColorBeats._beats.Add(new float[] { i });
+            for (float i = 94; i < 95.99; i += 0.5f)
+                _interiorColorBeats._beats.Add(new float[] { i });            
             for (var i = 32; i < _beatsInEolTrack; i++)
                 _interiorColorBeats._beats.Add(new float[] { i });
+            */
+            // fixed ending
+            float riff = 88;
+            _interiorColorBeats._beats.AddRange(new float[][] { new float[] { riff }, new float[] { riff+1 }, new float[] { riff+2 }, new float[] { riff+2.5f }, new float[] { riff+3 },
+                            new float[] { riff+4 }, new float[] { riff+5 }, new float[] { riff+5.5f }, new float[] { riff+6 }, new float[] { riff+6.5f }, new float[] { riff+7 }, new float[] { riff+7.5f }});
+
             for (var i = 0; i < _beatsInEolTrack; i += 8)
                 _floodColorBeats._beats.Add(new float[] { i });
             for (var i = 0; i < 32; i += 8)
@@ -220,7 +239,7 @@ namespace RideMusic
                     _fireplaceLight = fireplaceBrain.gameObject.AddComponent<Light>();
                     _fireplaceLight.type = LightType.Spot;
                     _fireplaceLight.range = 30;
-                    _fireplaceLight.intensity = 4.0f;
+                    _fireplaceLight.intensity = 0f;  // off unless End of Line mode changes it
                     _fireplaceLight.spotAngle = 25f; // was 30f
                     _fireplaceLight.innerSpotAngle = 25f; // was 21.80208
                     //_fireplaceLight.lightShadowCasterMode = LightShadowCasterMode.Everything;
@@ -340,6 +359,7 @@ namespace RideMusic
                     foreach (var candle in _candles)
                         candle.color = RandColor(candle.color);
                     _fireplaceLight.color = RandColor(_fireplaceLight.color);
+                    _fireplaceLight.intensity = 4.0f;
                 }
                 var floodColor = _floodColorBeats.Next(_lastPlaybackTime, playbackTime);
                 if (floodColor != null)

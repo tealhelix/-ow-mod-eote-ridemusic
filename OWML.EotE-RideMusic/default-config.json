@@ -1,9 +1,15 @@
 {
 	"enabled": true,
 	"settings": {
+		"End of Line mode": {
+			"type": "toggle",
+			"value": false,
+			"yes": "On",
+			"no": "Off",
+			"title": "End of Line mode"
+		},
 		"audioFileName": "PotC_ride_loop_lowpass_reverb.mp3",
 		"audioClipLengthWorkaroundDivisor": 8.0,
-		"soundMaxDistance": 154,
-		"audioRolloffMode": "Custom"
+		"soundMaxDistance": 154
 	}
 }

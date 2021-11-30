@@ -31,6 +31,7 @@ namespace RideMusic
 
         private float _soundMaxDistance;
         private bool _endOfLineMode = false;
+        private bool _endOfLineChangePending = false;
         private double _audioClipLengthWorkaroundDivisor;
         private float _beatsInEolTrack;
         private string _rideFileName;
@@ -99,13 +100,17 @@ namespace RideMusic
             var newEndOfLineMode = lconfig.GetSettingsValue<bool>("End of Line mode");
             if (newEndOfLineMode != _endOfLineMode)
             {
-                SwitchMode(newEndOfLineMode);
-                _endOfLineMode = newEndOfLineMode;
+                _endOfLineChangePending = true;
+                //SwitchMode(newEndOfLineMode);
+                //_endOfLineMode = newEndOfLineMode;
             }
         }
 
         private void ResetAudio(AudioSource source, bool endOfLineMode, float maxDistance)
         {
+            if (source == null)
+                return;
+
             var wasPlaying = source.isPlaying;
             var volume = source.volume;
             if (maxDistance > 0f)
@@ -175,6 +180,13 @@ namespace RideMusic
                     PartyPatches.s_FaderAudioSource._audioSource.UnPause();
                 if (_ambientAudioSource != null)
                     _ambientAudioSource.UnPause();
+                if (_endOfLineChangePending)
+                {
+                    _endOfLineMode = !_endOfLineMode;
+                    SwitchMode(_endOfLineMode);
+                    ModHelper.Config.SetSettingsValue("End of Line mode", _endOfLineMode); // just for safety
+                    _endOfLineChangePending = false;
+                }
             }
         }
 
@@ -202,7 +214,8 @@ namespace RideMusic
                 case GhostPartyDirector ghostPartyDirector
                     when ev == Events.AfterStart:
 
-                    // spotlight shining right out of the fireplace ghost!
+                    // spotlight shining right out of the fireplace ghost
+                    // no visible means of support and you have not seen nothing yet
                     var fireplaceBrain = ghostPartyDirector.GetValue<GhostBrain>("_fireplaceGhost");
                     _fireplaceLight = fireplaceBrain.gameObject.AddComponent<Light>();
                     _fireplaceLight.type = LightType.Spot;

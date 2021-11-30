@@ -4,6 +4,8 @@
 
 ## SPOILERS: Mid-game spoilers for Outer Wilds: Echoes of the Eye below.  
 
+## SEIZURE WARNING: End of Line mode includes strobing lights.
+
 #### v  
 
 #### v  
@@ -21,13 +23,22 @@
 This mod replaces the dour music coming from the house in the first dark area with the main theme from the Pirates of the Caribbean ride at Disney resorts.  
 Smell the bromine in the water, feel the air conditioned breeze on your face, and watch your step as you walk onto the ride vehicle!
 
+### Daft Punk End of Line mode
+
+If the party's still too relaxed for you, choose End of Line mode for a light show and the club music from Tron: Legacy - Daft Punk's "Derezzed". The ambient music changes too.
+
+| Key Combo | Description |
+|:---------:|:-----------:|
+`,` + `;` | Engage End of Line mode. This setting is also in the config file/menu.
+`,` + `'` | Disengage End of Line and play the standard audio.
+
 ### After the ride
 
 Past the house, or wherever you like, you can also play the music as background ambience.
 
 #### Ambient music control
 | Key Combo | Description |
-|:---------:|:------------|
+|:---------:|:-----------:|
 `,` + `/` | Increase volume, starting play at min volume if it was off.
 `,` + `.` | Decrease volume, stopping it if volume is now zero.
 
@@ -39,4 +50,3 @@ The default music assets (raw and mixed version of the clip) in this project are
 
 #### Todo
 * Restaurant at starting area with fake fireflies
-* Club music from Tron: Legacy with strobing lights

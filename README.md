@@ -1,6 +1,6 @@
 # Echoes of the Caribbean
 
-![logo](https://user-images.githubusercontent.com/94204968/143300453-17e5c7e1-e745-4260-b24b-0da57489b601.png)
+![logo](https://user-images.githubusercontent.com/94204968/143984111-ad096883-b83e-4e79-a3cd-27906f353438.jpg)
 
 ## SPOILERS: Mid-game spoilers for Outer Wilds: Echoes of the Eye below.  
 
@@ -25,7 +25,7 @@ Smell the bromine in the water, feel the air conditioned breeze on your face, an
 
 ### Daft Punk End of Line mode
 
-If the party's still too relaxed for you, choose End of Line mode for a light show and the club music from Tron: Legacy - Daft Punk's "Derezzed". The ambient music changes too.
+Or, you can choose End of Line mode for a light show and the club music from Tron: Legacy - Daft Punk's "Derezzed". The ambient music changes too.
 
 | Key Combo | Description |
 |:---------:|:-----------:|
